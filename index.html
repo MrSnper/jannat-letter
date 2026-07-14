@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Jannat ❤️</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{
+font-family:'Segoe UI',Tahoma,sans-serif;
+height:100vh;overflow:hidden;
+background:linear-gradient(135deg,#ffd6e7,#ffe9f2,#ffdbe8);
+display:flex;align-items:center;justify-content:center;
+}
+.bg{
+position:fixed;inset:0;
+background:
+radial-gradient(circle at 20% 20%,rgba(255,255,255,.8),transparent 20%),
+radial-gradient(circle at 80% 30%,rgba(255,255,255,.5),transparent 25%);
+animation:move 12s ease-in-out infinite alternate;
+}
+@keyframes move{to{transform:scale(1.1) translateY(-20px)}}
+.petals span{
+position:absolute;
+font-size:20px;
+animation:fall linear infinite;
+}
+@keyframes fall{
+from{transform:translateY(-100px) rotate(0deg)}
+to{transform:translateY(110vh) rotate(360deg)}
+}
+.scene{position:relative;z-index:5;text-align:center}
+.envelope{
+width:380px;height:250px;position:relative;cursor:pointer;
+filter:drop-shadow(0 25px 35px rgba(0,0,0,.18));
+}
+.back{
+position:absolute;inset:0;border-radius:14px;
+background:#f7e5eb;
+}
+.front{
+position:absolute;bottom:0;width:100%;height:65%;
+background:#f0d0da;
+clip-path:polygon(0 0,100% 0,100% 100%,0 100%);
+border-radius:0 0 14px 14px;
+z-index:4;
+}
+.flap{
+position:absolute;inset:0;
+background:#ebc5d1;
+clip-path:polygon(0 0,100% 0,50% 60%);
+transform-origin:top;
+transition:1.8s;
+z-index:6;
+}
+.open .flap{transform:rotateX(180deg)}
+.seal{
+position:absolute;left:50%;top:50%;
+transform:translate(-50%,-50%);
+width:90px;height:90px;border-radius:50%;
+background:radial-gradient(circle,#c52845,#8f0d26);
+color:#fff;font-weight:bold;
+display:flex;align-items:center;justify-content:center;
+z-index:10;transition:1s;
+}
+.open .seal{opacity:0;transform:translate(-50%,-50%) scale(2)}
+.letter{
+position:absolute;left:5%;width:90%;
+background:rgba(255,255,255,.95);
+backdrop-filter:blur(8px);
+border-radius:18px;
+padding:30px;
+line-height:2.1;
+max-height:75vh;
+overflow:auto;
+opacity:0;
+transform:translateY(120px);
+transition:2.4s;
+z-index:3;
+box-shadow:0 20px 40px rgba(0,0,0,.12);
+}
+.open .letter{
+opacity:1;
+transform:translateY(-220px);
+}
+h1{
+color:#b3173f;
+margin-bottom:20px;
+font-size:30px;
+}
+#text{color:#5d3c45}
+.note{margin-top:25px;color:#7b5260}
+</style>
+</head>
+<body>
+<div class="bg"></div>
+<div class="petals" id="petals"></div>
+
+<div class="scene">
+<div class="envelope" id="env">
+<div class="back"></div>
+<div class="front"></div>
+<div class="flap"></div>
+<div class="seal">Jannat</div>
+
+<div class="letter">
+<h1>إلى قلبي البعيد عني ❤️</h1>
+<div id="text"></div>
+</div>
+</div>
+<div class="note">اضغط على ختم Jannat</div>
+</div>
+
+<audio id="music" loop>
+<source src="piano.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+for(let i=0;i<25;i++){
+let p=document.createElement('span');
+p.innerHTML='🌸';
+p.style.left=Math.random()*100+'%';
+p.style.animationDuration=(8+Math.random()*10)+'s';
+document.getElementById('petals').appendChild(p);
+}
+
+const message=`
+متى تعودين إلى مكانك بين ضلوعي؟
+
+متى يعود صوتكِ ليطمئن بالي بأنني ما زلت حيّاً؟
+
+لماذا لم أولد وأنتِ معي منذ البداية؟ نعم، ولدتُ معيوباً من دون قلب... هذا أنا.
+
+كيف استطعت أن أعيش كل هذه المدة وأنتِ بعيدة عني ولستِ في مكانك الطبيعي؟
+
+لو أن الدنيا أعطتني أمنية واحدة فقط، لاخترت أن أعيش معكِ منذ البداية وحتى النهاية.
+
+كيف لي أن أتحمل بعدك أكثر؟ لقد أصبح فراغ صدري ينادي: أين ساكني؟
+
+أصبحت عيناي تفضحان شوقي وهما تترقبان عودتكِ.
+
+يوم عودتكِ سيكون يوم ميلادي الحقيقي، لأنني لم أكن أعيش حقاً إلا وأنتِ بداخلي.
+
+أتدرين لماذا وجودكِ مهم في حياتي؟
+
+لأن الله أحبني، فوضع في قلبي مودةً وحباً واهتماماً كنت أبحث عمّن يستحقها... فاختاركِ قلبي وعقلي معاً.
+
+اللهم اجعل حبنا خالصاً لوجهك الكريم، ولا تفسده الدنيا، واجمعنا بالحلال ويسّر أمرنا.
+
+أنا أحببتكِ بكل لغات الحب.
+
+أحبكِ عندما أشارككِ تفاصيل يومي.
+
+أحبكِ عندما أشرب القهوة، أو أقرأ كتاباً، أو أشاهد مسلسلاً، وأفكر بكِ.
+
+الحب بالنسبة لي هو المشاركة... مشاركة كل شيء.
+
+أنتِ مصدر السعادة والفرح وراحة البال.
+
+وبكلمة واحدة منكِ يعود ذلك الطفل الصغير الذي بداخلي للحياة.
+
+وأعدكِ أن أبقى أحبكِ، وأحب تفاصيلكِ كلها، وأحبكِ كما أنتِ...
+
+إلى آخر نبضة في قلبي ❤️
+`;
+
+const env=document.getElementById('env');
+const text=document.getElementById('text');
+const music=document.getElementById('music');
+let started=false;
+
+env.onclick=()=>{
+if(started)return;
+started=true;
+music.play().catch(()=>{});
+env.classList.add('open');
+
+let i=0;
+(function type(){
+ if(i<message.length){
+   text.innerHTML+=message.charAt(i);
+   i++;
+   text.scrollTop=text.scrollHeight;
+   setTimeout(type,28);
+ }
+})();
+}
+</script>
+</body>
+</html>
